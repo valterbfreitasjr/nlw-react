@@ -1,12 +1,9 @@
-import {
-    ArrowRight,
-    UserRoundPlus,
-  } from "lucide-react";
-  import { FormEvent, useState } from "react";
+import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import InviteGuestsModal from "../../components/invite-guests-modal";
 import ConfirmTripModal from "../../components/confirm-trip-modal";
 import DestinationAndDateStep from "../../components/step/destination-and-date-step";
+import InviteGuestsStep from "../../components/step/invite-guests-step";
   
   export function CreateTripPage() {
     const navigate = useNavigate();
@@ -86,43 +83,9 @@ import DestinationAndDateStep from "../../components/step/destination-and-date-s
           <div className="space-y-4">
             <DestinationAndDateStep isGuestsInputOpen={isGuestsInputOpen} closeGuestsInput={closeGuestsInput} openGuestsInput={openGuestsInput}/>
   
-            {isGuestsInputOpen && (
-              <div className="flex items-center w-full h-16 gap-3 px-4 bg-zinc-900 rounded-xl shadow-shape">
-                <button
-                  className="flex items-center flex-1 gap-2"
-                  onClick={openGuestsModal}
-                >
-                  <UserRoundPlus className="size-5 text-zinc-400" />
-                  {
-                    emailsToInvite.length === 1 ? (
-                      <span className="w-full text-lg text-left bg-transparent outline-none text-zinc-400">
-                        {emailsToInvite.length} pessoa convidada.
-                      </span>
-                    ) :
-                    emailsToInvite.length > 1 ? (
-                      <span className="w-full text-lg text-left bg-transparent outline-none text-zinc-400">
-                        {emailsToInvite.length} pessoas convidadas.
-                    </span>
-                    ) :
-                    (
-                      <span className="w-full text-lg text-left bg-transparent outline-none text-zinc-400">
-                        Quem estará na viagem?
-                      </span>
-                    )
-                  }
-                </button>
-  
-                <div className="w-px h-6 bg-zinc-800" />
-  
-                <button
-                  className="flex items-center gap-2 px-5 py-2 font-medium rounded-lg text-lime-950 bg-lime-300 hover:bg-lime-400"
-                  onClick={openConfirmTripModal}
-                >
-                  Confirmar viagem
-                  <ArrowRight className="size-5" />
-                </button>
-              </div>
-            )}
+            {isGuestsInputOpen && 
+              <InviteGuestsStep openGuestsModal={openGuestsModal} emailsToInvite={emailsToInvite} openConfirmTripModal={openConfirmTripModal} />
+            }
           </div>
   
           <p className="text-sm text-center text-zinc-500">
