@@ -9,11 +9,9 @@ import InviteGuestsStep from "../../components/step/invite-guests-step";
     const navigate = useNavigate();
 
     const [isGuestsInputOpen, setIsGuestsInputOpen] = useState(false);
-    const [isGuestsModalOpen, setIsGuestsModalOpen] = useState(false);
-  
-    const [emailsToInvite, setEmailsToInvite] = useState<string[]>([])
-  
+    const [isGuestsModalOpen, setIsGuestsModalOpen] = useState(false);  
     const [isConfirmTripModalOpen, setIsConfirmTripModalOpen] = useState(false);
+    const [emailsToInvite, setEmailsToInvite] = useState<string[]>([])
   
     const openGuestsInput = () => {
       setIsGuestsInputOpen(true);
